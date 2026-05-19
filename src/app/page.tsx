@@ -59,10 +59,15 @@ export default function MarauiEcoPark() {
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <TreePine className="text-brand-gold w-8 h-8" />
-            <span className="font-heading text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
-          </div>
+          <a href="#home" className="flex items-center gap-2">
+            <Image 
+              src="/logo preferencial_page-0001.png" 
+              alt="Maraui Eco Park" 
+              width={160} 
+              height={50} 
+              className="h-10 md:h-12 w-auto object-contain" 
+            />
+          </a>
           
           <div className="hidden md:flex items-center gap-8">
             {['Home', 'Hospedagem', 'Natureza', 'Eventos', 'Provas', 'Estrutura', 'Contato'].map((item) => (
@@ -494,8 +499,13 @@ export default function MarauiEcoPark() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-6">
-                <TreePine className="text-brand-gold w-8 h-8" />
-                <span className="font-heading text-2xl tracking-wider text-white">MARAUI</span>
+                <Image 
+                  src="/logo preferencial_page-0001.png" 
+                  alt="Maraui Eco Park" 
+                  width={160} 
+                  height={50} 
+                  className="h-12 w-auto object-contain" 
+                />
               </div>
               <p className="text-white/60 mb-6">Hospedagem, ecoturismo e eventos em Timon - MA. Sua conexão premium com a natureza.</p>
               <div className="flex gap-4">
