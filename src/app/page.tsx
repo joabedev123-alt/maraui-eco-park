@@ -91,9 +91,28 @@ function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps)
   );
 }
 
+const hospedagemMedia = [
+  { type: 'image', src: '/Iamgens ECO/eco03.jpg' },
+  { type: 'image', src: '/Iamgens ECO/eco04.jpg' },
+  { type: 'video', src: '/Iamgens ECO/eco06.MP4' },
+  { type: 'image', src: '/Iamgens ECO/eco07.jpg' },
+  { type: 'image', src: '/Iamgens ECO/eco15.jpg' },
+  { type: 'image', src: '/Iamgens ECO/eco16.jpg' },
+  { type: 'image', src: '/Iamgens ECO/eco17.jpg' },
+  { type: 'image', src: '/Iamgens ECO/eco19.jpg' }
+];
+
 export default function MarauiEcoPark() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hospedagemIdx, setHospedagemIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHospedagemIdx((prev) => (prev + 1) % hospedagemMedia.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -100]);
@@ -432,9 +451,36 @@ Seguem os dados da minha solicitação:
               viewport={{ once: true }}
               className="lg:w-1/2 relative h-[300px] md:h-[600px] w-full rounded-3xl overflow-hidden shadow-2xl"
             >
-              <Image src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=1000&auto=format&fit=crop" alt="Chalés Premium" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/60 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-white/20 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-white/30 text-white">
+              {hospedagemMedia.map((media, i) => (
+                <motion.div
+                  key={media.src}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: i === hospedagemIdx ? 1 : 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0"
+                >
+                  {media.type === 'video' ? (
+                    <video 
+                      src={media.src} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Image 
+                      src={media.src} 
+                      alt={`Hospedagem - ${i}`} 
+                      fill 
+                      className="object-cover" 
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  )}
+                </motion.div>
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/60 to-transparent z-10"></div>
+              <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-white/20 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-white/30 text-white z-20">
                 <Star className="w-6 h-6 md:w-8 md:h-8 text-brand-gold mb-1 md:mb-2 fill-brand-gold" />
                 <p className="font-heading text-xl md:text-3xl">Conforto Rústico</p>
                 <p className="font-light text-xs md:text-sm">Integração perfeita com a natureza</p>
