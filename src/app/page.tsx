@@ -77,11 +77,7 @@ export default function MarauiEcoPark() {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <button className="bg-brand-orange hover:bg-brand-orange/90 text-white px-8 py-3 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(201,106,43,0.4)]">
-              Reservar Agora
-            </button>
-          </div>
+
 
           <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X /> : <Menu />}
