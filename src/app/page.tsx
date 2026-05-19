@@ -55,7 +55,7 @@ Seguem os dados da minha solicitação:
 - Hóspedes: ${guests}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5586999999999?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/5586988759200?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -153,7 +153,7 @@ Seguem os dados da minha solicitação:
                 Reservar Agora <ChevronRight className="w-5 h-5" />
               </button>
               <a 
-                href="https://wa.me/5586999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20hospedagens%20e%20atividades%20do%20Maraui%20Eco%20Park."
+                href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20hospedagens%20e%20atividades%20do%20Maraui%20Eco%20Park."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2"
@@ -576,7 +576,7 @@ Seguem os dados da minha solicitação:
             <div>
               <h4 className="font-bold text-white uppercase tracking-widest mb-6">Contato</h4>
               <ul className="space-y-3 text-white/60">
-                <li>+55 (86) 99999-9999</li>
+                <li>+55 (86) 98875-9200</li>
                 <li>contato@marauiecopark.com.br</li>
                 <li>Povoado Sagrador, Timon - MA</li>
                 <li>Apenas 7km de Teresina</li>
@@ -603,7 +603,7 @@ Seguem os dados da minha solicitação:
 
       {/* FLOATING WHATSAPP */}
       <a 
-        href="https://wa.me/5586999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Maraui%20Eco%20Park."
+        href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Maraui%20Eco%20Park."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 transition-transform"
