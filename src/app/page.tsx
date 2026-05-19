@@ -59,17 +59,19 @@ export default function MarauiEcoPark() {
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg' : 'bg-transparent py-4'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <a href="#home" className="flex items-center gap-2">
-            <Image 
-              src="/logo preferencial_page-0001.png" 
-              alt="Maraui Eco Park" 
-              width={320} 
-              height={100} 
-              className="h-16 md:h-24 w-auto object-contain" 
-            />
-          </a>
+          <div className="flex-1 flex justify-start">
+            <a href="#home" className="flex items-center gap-2">
+              <Image 
+                src="/logo preferencial_page-0001.png" 
+                alt="Maraui Eco Park" 
+                width={320} 
+                height={100} 
+                className="h-16 md:h-24 w-auto object-contain" 
+              />
+            </a>
+          </div>
           
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center justify-center gap-8">
             {['Home', 'Hospedagem', 'Natureza', 'Eventos', 'Provas', 'Estrutura', 'Contato'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-white/90 hover:text-brand-gold text-sm font-medium transition-colors uppercase tracking-widest">
                 {item}
@@ -77,11 +79,11 @@ export default function MarauiEcoPark() {
             ))}
           </div>
 
-
-
-          <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="flex-1 flex justify-end">
+            <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </nav>
 
