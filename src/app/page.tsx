@@ -34,6 +34,31 @@ export default function MarauiEcoPark() {
 
   const [isMobile, setIsMobile] = useState(false);
 
+  const [checkIn, setCheckIn] = useState('');
+  const [checkOut, setCheckOut] = useState('');
+  const [guests, setGuests] = useState('2 Hóspedes');
+  const [accommodation, setAccommodation] = useState('Chalé Premium');
+
+  const handleQuery = () => {
+    const formatDate = (dateStr: string) => {
+      if (!dateStr) return 'Não informado';
+      const [year, month, day] = dateStr.split('-');
+      return `${day}/${month}/${year}`;
+    };
+
+    const message = `Olá, gostaria de solicitar informações sobre o passeio e reserva no camping do Maraui Eco Park.
+
+Seguem os dados da minha solicitação:
+- Acomodação: ${accommodation}
+- Check-in: ${formatDate(checkIn)}
+- Check-out: ${formatDate(checkOut)}
+- Hóspedes: ${guests}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/5586999999999?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -127,9 +152,14 @@ export default function MarauiEcoPark() {
               <button className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center">
                 Reservar Agora <ChevronRight className="w-5 h-5" />
               </button>
-              <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2">
+              <a 
+                href="https://wa.me/5586999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20hospedagens%20e%20atividades%20do%20Maraui%20Eco%20Park."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2"
+              >
                 <Phone className="w-5 h-5" /> Falar no WhatsApp
-              </button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -148,30 +178,51 @@ export default function MarauiEcoPark() {
         >
           <div className="flex flex-col w-full md:w-auto">
             <span className="text-xs uppercase tracking-widest text-brand-green-dark font-bold mb-1 flex items-center gap-2"><Calendar className="w-4 h-4" /> Check-in</span>
-            <input type="date" className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" />
+            <input 
+              type="date" 
+              value={checkIn}
+              onChange={(e) => setCheckIn(e.target.value)}
+              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" 
+            />
           </div>
           <div className="flex flex-col w-full md:w-auto">
             <span className="text-xs uppercase tracking-widest text-brand-green-dark font-bold mb-1 flex items-center gap-2"><Calendar className="w-4 h-4" /> Check-out</span>
-            <input type="date" className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" />
+            <input 
+              type="date" 
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" 
+            />
           </div>
           <div className="flex flex-col w-full md:w-auto">
             <span className="text-xs uppercase tracking-widest text-brand-green-dark font-bold mb-1 flex items-center gap-2"><Users className="w-4 h-4" /> Pessoas</span>
-            <select className="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black appearance-none cursor-pointer">
-              <option>2 Hóspedes</option>
-              <option>3 Hóspedes</option>
-              <option>4+ Hóspedes</option>
-              <option>Grupo / Evento</option>
+            <select 
+              value={guests}
+              onChange={(e) => setGuests(e.target.value)}
+              className="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black appearance-none cursor-pointer"
+            >
+              <option value="2 Hóspedes">2 Hóspedes</option>
+              <option value="3 Hóspedes">3 Hóspedes</option>
+              <option value="4+ Hóspedes">4+ Hóspedes</option>
+              <option value="Grupo / Evento">Grupo / Evento</option>
             </select>
           </div>
           <div className="flex flex-col w-full md:w-auto">
             <span className="text-xs uppercase tracking-widest text-brand-green-dark font-bold mb-1 flex items-center gap-2"><Tent className="w-4 h-4" /> Acomodação</span>
-            <select className="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black appearance-none cursor-pointer">
-              <option>Chalé Premium</option>
-              <option>Área de Camping</option>
-              <option>Day Use</option>
+            <select 
+              value={accommodation}
+              onChange={(e) => setAccommodation(e.target.value)}
+              className="w-full bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black appearance-none cursor-pointer"
+            >
+              <option value="Chalé Premium">Chalé Premium</option>
+              <option value="Área de Camping">Área de Camping</option>
+              <option value="Day Use">Day Use</option>
             </select>
           </div>
-          <button className="bg-brand-green-dark hover:bg-brand-green text-white px-8 py-4 rounded-xl font-bold text-sm tracking-widest uppercase transition-all w-full md:w-auto mt-4 md:mt-0 shadow-lg">
+          <button 
+            onClick={handleQuery}
+            className="bg-brand-green-dark hover:bg-brand-green text-white px-8 py-4 rounded-xl font-bold text-sm tracking-widest uppercase transition-all w-full md:w-auto mt-4 md:mt-0 shadow-lg"
+          >
             Consultar
           </button>
         </motion.div>
@@ -551,7 +602,12 @@ export default function MarauiEcoPark() {
       </footer>
 
       {/* FLOATING WHATSAPP */}
-      <a href="#" className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 transition-transform">
+      <a 
+        href="https://wa.me/5586999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Maraui%20Eco%20Park."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 transition-transform"
+      >
         <Phone className="w-8 h-8" />
       </a>
     </main>
