@@ -57,15 +57,15 @@ export default function MarauiEcoPark() {
     <main className="min-h-screen bg-brand-white selection:bg-brand-orange selection:text-white font-sans overflow-x-hidden">
       
       {/* NAVBAR */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg' : 'bg-transparent py-4'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <a href="#home" className="flex items-center gap-2">
             <Image 
               src="/logo preferencial_page-0001.png" 
               alt="Maraui Eco Park" 
-              width={160} 
-              height={50} 
-              className="h-10 md:h-12 w-auto object-contain" 
+              width={320} 
+              height={100} 
+              className="h-16 md:h-24 w-auto object-contain" 
             />
           </a>
           
@@ -502,9 +502,9 @@ export default function MarauiEcoPark() {
                 <Image 
                   src="/logo preferencial_page-0001.png" 
                   alt="Maraui Eco Park" 
-                  width={160} 
-                  height={50} 
-                  className="h-12 w-auto object-contain" 
+                  width={360} 
+                  height={120} 
+                  className="h-24 md:h-32 w-auto object-contain" 
                 />
               </div>
               <p className="text-white/60 mb-6">Hospedagem, ecoturismo e eventos em Timon - MA. Sua conexão premium com a natureza.</p>
