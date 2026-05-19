@@ -57,7 +57,7 @@ export default function MarauiEcoPark() {
     <main className="min-h-screen bg-brand-white selection:bg-brand-orange selection:text-white font-sans overflow-x-hidden">
       
       {/* NAVBAR */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg' : 'bg-transparent py-4'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 transform ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg -translate-y-full' : 'bg-transparent py-4 translate-y-0'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex-1 flex justify-start">
             <a href="#home" className="flex items-center gap-2">
