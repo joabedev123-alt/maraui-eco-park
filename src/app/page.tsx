@@ -127,7 +127,7 @@ export default function MarauiEcoPark() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center">
-                Fazer Reserva <ChevronRight className="w-5 h-5" />
+                Reservar Agora <ChevronRight className="w-5 h-5" />
               </button>
               <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2">
                 <Phone className="w-5 h-5" /> Falar no WhatsApp
