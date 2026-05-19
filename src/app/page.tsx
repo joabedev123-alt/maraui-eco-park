@@ -113,7 +113,7 @@ export default function MarauiEcoPark() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/80 via-brand-black/40 to-brand-black/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/90 via-brand-black/60 to-brand-black/95"></div>
         </motion.div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
