@@ -227,7 +227,7 @@ export default function MarauiEcoPark() {
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl bg-brand-gold flex items-center justify-center text-center p-4 md:p-8">
                      <div>
                        <MapPin className="w-8 h-8 md:w-12 md:h-12 text-white mx-auto mb-2 md:mb-4" />
-                       <h3 className="font-heading text-xl md:text-3xl text-white">7KM DE TERESINA</h3>
+                       <h3 className="font-heading text-xl md:text-3xl text-white">A APENAS 7KM DE TERESINA</h3>
                        <p className="text-white/80 mt-1 md:mt-2 text-xs md:text-sm font-medium">Fácil acesso</p>
                      </div>
                   </div>
