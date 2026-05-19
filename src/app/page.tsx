@@ -25,6 +25,72 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
 };
 
+interface AdventureCardProps {
+  title: string;
+  img: string | string[];
+  badge: string;
+  idx: number;
+  isMobile: boolean;
+}
+
+function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps) {
+  const isArray = Array.isArray(img);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    if (!isArray) return;
+    const interval = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % img.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isArray, img]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: isMobile ? 0 : idx * 0.05 }}
+      viewport={{ once: true }}
+      className="group relative h-48 md:h-80 rounded-2xl overflow-hidden cursor-pointer"
+    >
+      {isArray ? (
+        img.map((src, i) => (
+          <motion.div
+            key={src}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: i === currentIdx ? 1 : 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0"
+          >
+            <Image 
+              src={src} 
+              alt={`${title} - ${i}`} 
+              fill 
+              className="object-cover transition-transform duration-700 group-hover:scale-110" 
+              sizes="(max-width: 768px) 50vw, 25vw"
+            />
+          </motion.div>
+        ))
+      ) : (
+        <Image 
+          src={img} 
+          alt={title} 
+          fill 
+          className="object-cover transition-transform duration-700 group-hover:scale-110" 
+          sizes="(max-width: 768px) 50vw, 25vw"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+      <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-brand-orange/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest z-20">
+        {badge}
+      </div>
+      <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-20">
+        <h3 className="font-heading text-xl md:text-3xl text-white group-hover:text-brand-gold transition-colors leading-none">{title}</h3>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function MarauiEcoPark() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -310,7 +376,20 @@ Seguem os dados da minha solicitação:
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
-              { title: "Trilhas Ecológicas", img: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=600&auto=format&fit=crop", badge: "Aventura" },
+              { 
+                title: "Trilhas Ecológicas", 
+                img: [
+                  "/Iamgens ECO/eco01.PNG",
+                  "/Iamgens ECO/eco02.PNG",
+                  "/Iamgens ECO/eco08.jpeg",
+                  "/Iamgens ECO/eco05.jpeg",
+                  "/Iamgens ECO/eco10.JPEG",
+                  "/Iamgens ECO/eco11.JPEG",
+                  "/Iamgens ECO/eco20.jpg",
+                  "/Iamgens ECO/eco21.jpg"
+                ], 
+                badge: "Aventura" 
+              },
               { title: "Camping", img: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=600&auto=format&fit=crop", badge: "Hospedagem" },
               { title: "Fogueira", img: "https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=600&auto=format&fit=crop", badge: "Noturno" },
               { title: "Casa na Árvore", img: "https://images.unsplash.com/photo-1520608552146-248107579603?q=80&w=600&auto=format&fit=crop", badge: "Kids/Família" },
@@ -319,23 +398,14 @@ Seguem os dados da minha solicitação:
               { title: "Experiências Outdoor", img: "https://images.unsplash.com/photo-1533587851505-d119e131927f?q=80&w=600&auto=format&fit=crop", badge: "Esporte" },
               { title: "Sobrevivência", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop", badge: "Radical" }
             ].map((item, idx) => (
-              <motion.div 
+              <AdventureCard 
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: isMobile ? 0 : idx * 0.05 }}
-                viewport={{ once: true }}
-                className="group relative h-48 md:h-80 rounded-2xl overflow-hidden cursor-pointer"
-              >
-                <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-brand-orange/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest">
-                  {item.badge}
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
-                  <h3 className="font-heading text-xl md:text-3xl text-white group-hover:text-brand-gold transition-colors leading-none">{item.title}</h3>
-                </div>
-              </motion.div>
+                title={item.title}
+                img={item.img}
+                badge={item.badge}
+                idx={idx}
+                isMobile={isMobile}
+              />
             ))}
           </div>
 
