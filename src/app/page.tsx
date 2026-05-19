@@ -205,9 +205,6 @@ Seguem os dados da minha solicitação:
               {item}
             </a>
           ))}
-          <button className="bg-brand-orange text-white px-10 py-4 rounded-full font-bold text-lg tracking-widest uppercase mt-4">
-            Reservar Agora
-          </button>
         </div>
       )}
 
@@ -226,7 +223,7 @@ Seguem os dados da minha solicitação:
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
           <motion.div initial="hidden" animate="visible" variants={FADE_UP}>
-            <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl text-white mb-6 drop-shadow-2xl leading-none">
+            <h1 className="font-heading text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-white mb-6 drop-shadow-2xl leading-none">
               NATUREZA, AVENTURA E <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-orange">EXPERIÊNCIAS REAIS</span>
             </h1>
@@ -272,7 +269,7 @@ Seguem os dados da minha solicitação:
               type="date" 
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" 
+              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black w-full" 
             />
           </div>
           <div className="flex flex-col w-full md:w-auto">
@@ -281,7 +278,7 @@ Seguem os dados da minha solicitação:
               type="date" 
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black" 
+              className="bg-transparent border-b border-gray-300 py-2 focus:outline-none focus:border-brand-orange text-brand-black w-full" 
             />
           </div>
           <div className="flex flex-col w-full md:w-auto">
@@ -332,7 +329,7 @@ Seguem os dados da minha solicitação:
                 <span className="w-12 h-px bg-brand-orange"></span>
                 Sobre o Parque
               </div>
-              <h2 className="font-heading text-5xl md:text-7xl text-brand-green-dark leading-none">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-green-dark leading-none">
                 Refúgio Perfeito <br/><span className="text-brand-orange">Perto da Cidade</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
@@ -370,9 +367,9 @@ Seguem os dados da minha solicitação:
                   </div>
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl bg-brand-gold flex items-center justify-center text-center p-4 md:p-8">
                      <div>
-                       <MapPin className="w-8 h-8 md:w-12 md:h-12 text-white mx-auto mb-2 md:mb-4" />
-                       <h3 className="font-heading text-xl md:text-3xl text-white">A APENAS 7KM DE TERESINA</h3>
-                       <p className="text-white/80 mt-1 md:mt-2 text-xs md:text-sm font-medium">Fácil acesso</p>
+                       <MapPin className="w-6 h-6 md:w-12 md:h-12 text-white mx-auto mb-2 md:mb-4" />
+                       <h3 className="font-heading text-sm sm:text-lg md:text-3xl text-white leading-tight">A APENAS 7KM DE TERESINA</h3>
+                       <p className="text-white/80 mt-1 md:mt-2 text-[10px] sm:text-xs md:text-sm font-medium">Fácil acesso</p>
                      </div>
                   </div>
                 </div>
@@ -389,7 +386,7 @@ Seguem os dados da minha solicitação:
         
         <div className="container mx-auto max-w-7xl px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-6xl md:text-7xl mb-4">Escolha sua <span className="text-brand-orange">Aventura</span></h2>
+            <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl mb-4">Escolha sua <span className="text-brand-orange">Aventura</span></h2>
             <p className="text-brand-sand text-lg max-w-2xl mx-auto">Temos opções perfeitas tanto para quem busca relaxamento profundo quanto para quem tem sede de adrenalina.</p>
           </div>
 
@@ -493,7 +490,7 @@ Seguem os dados da minha solicitação:
               viewport={{ once: true }}
               className="lg:w-1/2 space-y-8"
             >
-              <h2 className="font-heading text-5xl md:text-7xl text-brand-black leading-none">
+              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black leading-none">
                 Conforto em <br/><span className="text-brand-orange">Meio à Natureza</span>
               </h2>
               <p className="text-gray-700 text-lg">
@@ -537,7 +534,7 @@ Seguem os dados da minha solicitação:
       <section id="eventos" className="py-24 px-6 bg-brand-white">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-5xl md:text-7xl text-brand-black mb-4">Cenário Perfeito para <span className="text-brand-gold">Seu Evento</span></h2>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black mb-4">Cenário Perfeito para <span className="text-brand-gold">Seu Evento</span></h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">De celebrações íntimas a grandes encontros, o Maraui Eco Park oferece a infraestrutura e a beleza natural para momentos marcantes.</p>
           </div>
 
@@ -579,7 +576,7 @@ Seguem os dados da minha solicitação:
                 <span className="w-12 h-px bg-brand-gold"></span>
                 Adrenalina Pura
               </div>
-              <h2 className="font-heading text-6xl md:text-8xl leading-none">PROVAS <br/><span className="text-brand-orange">OFICIAIS</span></h2>
+              <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl leading-none">PROVAS <br/><span className="text-brand-orange">OFICIAIS</span></h2>
             </div>
             <p className="text-brand-sand max-w-md text-lg">
               Sediamos as competições mais desafiadoras da região. Teste seus limites em nossos percursos exclusivos na natureza.
@@ -602,7 +599,7 @@ Seguem os dados da minha solicitação:
               >
                 <div>
                   <span className="text-brand-gold text-xs md:text-sm font-bold uppercase tracking-widest mb-1 md:mb-2 block">{prova.type}</span>
-                  <h3 className="font-heading text-2xl md:text-4xl text-white group-hover:text-brand-orange transition-colors leading-none">{prova.title}</h3>
+                  <h3 className="font-heading text-xl sm:text-2xl md:text-4xl text-white group-hover:text-brand-orange transition-colors leading-none">{prova.title}</h3>
                   <p className="text-brand-sand mt-2 text-xs md:text-base leading-relaxed">{prova.desc}</p>
                 </div>
                 <button className="flex-shrink-0 w-10 h-10 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-brand-orange group-hover:border-brand-orange transition-all">
@@ -618,7 +615,7 @@ Seguem os dados da minha solicitação:
       <section className="py-24 px-6 bg-brand-white">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-5xl md:text-7xl text-brand-black mb-4">Nosso Compromisso com a <span className="text-brand-green">Natureza</span></h2>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black mb-4">Nosso Compromisso com a <span className="text-brand-green">Natureza</span></h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {['Preservação Ambiental', 'Proteção da Fauna', 'Reflorestamento', 'Educação Ecológica'].map((item, idx) => (
@@ -634,7 +631,7 @@ Seguem os dados da minha solicitação:
       {/* 9. DEPOIMENTOS */}
       <section className="py-24 px-6 bg-brand-sand relative overflow-hidden">
         <div className="container mx-auto max-w-7xl relative z-10">
-          <h2 className="font-heading text-5xl md:text-7xl text-brand-black text-center mb-16">O que dizem nossos <span className="text-brand-orange">Aventureiros</span></h2>
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black text-center mb-16">O que dizem nossos <span className="text-brand-orange">Aventureiros</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((_, idx) => (
               <motion.div 
@@ -666,7 +663,7 @@ Seguem os dados da minha solicitação:
         <Image src="https://images.unsplash.com/photo-1504280741564-f20387b9cc0f?q=80&w=2000&auto=format&fit=crop" alt="Campfire" fill className="object-cover" />
         <div className="absolute inset-0 bg-brand-black/70"></div>
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
-          <h2 className="font-heading text-6xl md:text-8xl text-white mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
+          <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl text-white mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a 
               href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
