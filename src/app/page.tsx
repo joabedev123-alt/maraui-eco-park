@@ -149,9 +149,14 @@ Seguem os dados da minha solicitação:
               Camping, chalés, eventos, esportes e conexão verdadeira com a natureza a apenas <strong className="text-white font-semibold">7km de Teresina</strong>, no povoado Sagrador.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center">
+              <a 
+                href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center"
+              >
                 Reservar Agora <ChevronRight className="w-5 h-5" />
-              </button>
+              </a>
               <a 
                 href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20hospedagens%20e%20atividades%20do%20Maraui%20Eco%20Park."
                 target="_blank"
@@ -251,9 +256,14 @@ Seguem os dados da minha solicitação:
               <p className="text-gray-600 text-lg leading-relaxed">
                 Aqui você encontra conforto, adrenalina, liberdade e contato verdadeiro com a natureza em um ambiente seguro, familiar e acolhedor.
               </p>
-              <button className="border-2 border-brand-green-dark text-brand-green-dark hover:bg-brand-green-dark hover:text-white px-8 py-4 rounded-full font-bold tracking-widest uppercase transition-colors flex items-center gap-2">
+              <a 
+                href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20mais%20experi%C3%AAncias%20de%20ecoturismo%20no%20Maraui%20Eco%20Park."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-brand-green-dark text-brand-green-dark hover:bg-brand-green-dark hover:text-white px-8 py-4 rounded-full font-bold tracking-widest uppercase transition-colors flex items-center gap-2 inline-flex w-fit"
+              >
                 Conhecer Experiências <ChevronRight className="w-5 h-5" />
-              </button>
+              </a>
             </motion.div>
             
             <div className="lg:w-1/2 w-full relative">
@@ -330,9 +340,14 @@ Seguem os dados da minha solicitação:
           </div>
 
           <div className="mt-16 text-center">
-            <button className="bg-brand-green hover:bg-brand-green/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(47,107,69,0.4)] inline-flex items-center gap-3">
+            <a 
+              href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aventura%20no%20Maraui%20Eco%20Park."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-green hover:bg-brand-green/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(47,107,69,0.4)] inline-flex items-center gap-3"
+            >
               <Phone className="w-5 h-5" /> Quero falar no WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -388,9 +403,14 @@ Seguem os dados da minha solicitação:
               </div>
 
               <div className="pt-6">
-                <button className="bg-brand-black hover:bg-brand-black/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-xl">
+                <a 
+                  href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20garantir%20minha%20reserva%20de%20hospedagem%20no%20Maraui%20Eco%20Park."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-brand-black hover:bg-brand-black/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-xl inline-block"
+                >
                   Garantir Reserva
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -532,12 +552,22 @@ Seguem os dados da minha solicitação:
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
           <h2 className="font-heading text-6xl md:text-8xl text-white mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <button className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:scale-105">
+            <a 
+              href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:scale-105 flex items-center justify-center"
+            >
               Reservar Agora
-            </button>
-            <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all hover:scale-105 flex items-center justify-center gap-2">
+            </a>
+            <a 
+              href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20falar%20conosco%20sobre%20o%20Maraui%20Eco%20Park."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all hover:scale-105 flex items-center justify-center gap-2"
+            >
               <Phone className="w-5 h-5" /> Falar no WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </section>
