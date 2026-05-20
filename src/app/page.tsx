@@ -619,6 +619,54 @@ Seguem os dados da minha solicitação:
         </div>
       </section>
 
+      {/* SEÇÃO EVENTOS DE PARCEIROS */}
+      <section className="py-20 px-6 bg-brand-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-4 text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">
+              <span className="w-12 h-px bg-brand-orange"></span>
+              Integração e Comunidade
+              <span className="w-12 h-px bg-brand-orange"></span>
+            </div>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black leading-none">
+              Eventos de <span className="text-brand-gold">Parceiros</span>
+            </h2>
+            <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
+              Veja alguns dos momentos incríveis realizados por nossos parceiros e comunidade no Maraui Eco Park.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.15.23.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.16.33.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.17.29.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.12.19.jpeg"
+            ].map((imgSrc, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="group relative h-64 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300"
+              >
+                <Image 
+                  src={imgSrc} 
+                  alt={`Evento Parceiro ${index + 1}`} 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 5. HOSPEDAGEM PREMIUM */}
       <section id="hospedagem" className="py-24 px-6 bg-brand-sand overflow-hidden">
         <div className="container mx-auto max-w-7xl">
