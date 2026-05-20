@@ -9,6 +9,7 @@ import {
   Tent, 
   MapPin, 
   ChevronRight, 
+  ChevronLeft, 
   Star, 
   TreePine, 
   Flame, 
@@ -17,7 +18,8 @@ import {
   Play,
   Menu,
   X,
-  Phone
+  Phone,
+  Mail
 } from 'lucide-react';
 
 const FADE_UP = {
@@ -27,39 +29,79 @@ const FADE_UP = {
 
 interface AdventureCardProps {
   title: string;
-  img: string | string[];
+  img: string[];
   badge: string;
   idx: number;
   isMobile: boolean;
 }
 
 function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps) {
-  const isArray = Array.isArray(img);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [autoPlayActive, setAutoPlayActive] = useState(true);
 
+  // Carrossel automático
   useEffect(() => {
-    if (!isArray) return;
+    if (!autoPlayActive) {
+      // Se desativar (devido a clique manual), reativa após 8 segundos
+      const reactivateTimeout = setTimeout(() => {
+        setAutoPlayActive(true);
+      }, 8000);
+      return () => clearTimeout(reactivateTimeout);
+    }
+
     const interval = setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % img.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [isArray, img]);
+  }, [autoPlayActive, img.length]);
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setAutoPlayActive(false);
+    setCurrentIdx((prev) => (prev + 1) % img.length);
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setAutoPlayActive(false);
+    setCurrentIdx((prev) => (prev - 1 + img.length) % img.length);
+  };
+
+  // Atalhos de teclado no Lightbox
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') {
+        setCurrentIdx((prev) => (prev + 1) % img.length);
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentIdx((prev) => (prev - 1 + img.length) % img.length);
+      } else if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLightboxOpen, img.length]);
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: isMobile ? 0 : idx * 0.05 }}
-      viewport={{ once: true }}
-      className="group relative h-48 md:h-80 rounded-2xl overflow-hidden cursor-pointer"
-    >
-      {isArray ? (
-        img.map((src, i) => (
+    <>
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: isMobile ? 0 : idx * 0.05 }}
+        viewport={{ once: true }}
+        onClick={() => setIsLightboxOpen(true)}
+        className="group relative h-48 md:h-80 rounded-2xl overflow-hidden cursor-pointer w-[calc(50%-0.5rem)] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] select-none shadow-lg border border-white/5"
+      >
+        {img.map((src, i) => (
           <motion.div
             key={src}
             initial={{ opacity: 0 }}
             animate={{ opacity: i === currentIdx ? 1 : 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="absolute inset-0"
           >
             <Image 
@@ -70,42 +112,183 @@ function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps)
               sizes="(max-width: 768px) 50vw, 25vw"
             />
           </motion.div>
-        ))
-      ) : (
-        <Image 
-          src={img} 
-          alt={title} 
-          fill 
-          className="object-cover transition-transform duration-700 group-hover:scale-110" 
-          sizes="(max-width: 768px) 50vw, 25vw"
-        />
+        ))}
+
+        {/* Gradiente Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 z-10"></div>
+        
+        {/* Categoria Badge */}
+        <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-brand-orange/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest z-20">
+          {badge}
+        </div>
+
+        {/* Título */}
+        <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-20">
+          <h3 className="font-heading text-xl md:text-3xl text-white group-hover:text-brand-gold transition-colors leading-none">{title}</h3>
+        </div>
+
+        {/* Setas pequenas manuais no card */}
+        <button 
+          onClick={handlePrev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+          aria-label="Imagem anterior"
+        >
+          <ChevronLeft className="w-4 h-4 md:w-5 h-5" />
+        </button>
+
+        <button 
+          onClick={handleNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+          aria-label="Próxima imagem"
+        >
+          <ChevronRight className="w-4 h-4 md:w-5 h-5" />
+        </button>
+
+        {/* Dots indicadores de imagem */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex gap-1">
+          {img.map((_, i) => (
+            <span 
+              key={i} 
+              className={`w-1 h-1 md:w-1.5 md:h-1.5 rounded-full transition-all ${i === currentIdx ? 'bg-brand-gold w-2 md:w-3' : 'bg-white/40'}`}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* LIGHTBOX TELA CHEIA */}
+      {isLightboxOpen && (
+        <div 
+          onClick={() => setIsLightboxOpen(false)}
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 select-none cursor-zoom-out"
+        >
+          {/* Botão de Fechar */}
+          <button 
+            onClick={() => setIsLightboxOpen(false)}
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-[110] bg-white/10 hover:bg-brand-orange text-white p-2 rounded-full transition-all cursor-pointer"
+            aria-label="Fechar tela cheia"
+          >
+            <X className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+
+          {/* Seta Esquerda no Lightbox */}
+          <button 
+            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-[110] bg-white/10 hover:bg-brand-orange text-white p-2 md:p-3 rounded-full transition-all cursor-pointer"
+            aria-label="Imagem anterior"
+          >
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+
+          {/* Conteúdo de Imagem Centralizado */}
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            className="relative w-full max-w-5xl h-[70vh] md:h-[80vh] flex flex-col justify-center items-center cursor-default"
+          >
+            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+              <Image 
+                src={img[currentIdx]} 
+                alt={`${title} - ${currentIdx}`} 
+                fill 
+                className="object-contain"
+                priority
+              />
+            </div>
+            
+            {/* Texto Descritivo no Rodapé */}
+            <div className="mt-4 text-center text-white">
+              <span className="bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                {badge}
+              </span>
+              <h4 className="font-heading text-2xl md:text-3xl text-brand-gold mt-2 leading-none">{title}</h4>
+              <p className="text-gray-400 text-xs md:text-sm mt-1">Imagem {currentIdx + 1} de {img.length}</p>
+            </div>
+          </div>
+
+          {/* Seta Direita no Lightbox */}
+          <button 
+            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-[110] bg-white/10 hover:bg-brand-orange text-white p-2 md:p-3 rounded-full transition-all cursor-pointer"
+            aria-label="Próxima imagem"
+          >
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+          </button>
+        </div>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-      <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-brand-orange/90 backdrop-blur-sm text-white text-[10px] md:text-xs font-bold px-2 py-0.5 md:px-3 md:py-1 rounded-full uppercase tracking-widest z-20">
-        {badge}
-      </div>
-      <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 z-20">
-        <h3 className="font-heading text-xl md:text-3xl text-white group-hover:text-brand-gold transition-colors leading-none">{title}</h3>
-      </div>
-    </motion.div>
+    </>
   );
 }
 
 const hospedagemMedia = [
-  { type: 'image', src: '/Iamgens ECO/eco03.jpg' },
-  { type: 'image', src: '/Iamgens ECO/eco04.jpg' },
-  { type: 'video', src: '/Iamgens ECO/eco06.MP4' },
-  { type: 'image', src: '/Iamgens ECO/eco07.jpg' },
-  { type: 'image', src: '/Iamgens ECO/eco15.jpg' },
-  { type: 'image', src: '/Iamgens ECO/eco16.jpg' },
-  { type: 'image', src: '/Iamgens ECO/eco17.jpg' },
-  { type: 'image', src: '/Iamgens ECO/eco19.jpg' }
+  { type: 'image', src: '/Iamgens ECO/Camping/eco03.jpg' },
+  { type: 'image', src: '/Iamgens ECO/Camping/ec3.jpg' },
+  { type: 'video', src: '/Iamgens ECO/Camping/eco06.MP4' },
+  { type: 'image', src: '/Iamgens ECO/Camping/ec4.jpg' },
+  { type: 'image', src: '/Iamgens ECO/Camping/ec5.jpeg' },
+  { type: 'image', src: '/Iamgens ECO/espaço kids/eco12.jpeg' },
+  { type: 'image', src: '/Iamgens ECO/espaço kids/eco13.jpeg' },
+  { type: 'image', src: '/Iamgens ECO/espaço kids/eco14.jpeg' }
 ];
 
 export default function MarauiEcoPark() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hospedagemIdx, setHospedagemIdx] = useState(0);
+
+  const [adventureImages, setAdventureImages] = useState({
+    trilhas: [
+      "/Iamgens ECO/Trilhas Ecologicas/eco01.PNG",
+      "/Iamgens ECO/Trilhas Ecologicas/eco02.PNG",
+      "/Iamgens ECO/Trilhas Ecologicas/WhatsApp Image 2026-05-20 at 08.51.17.jpeg",
+      "/Iamgens ECO/Trilhas Ecologicas/WhatsApp Image 2026-05-20 at 08.51.18 (1).jpeg",
+      "/Iamgens ECO/Trilhas Ecologicas/WhatsApp Image 2026-05-20 at 08.51.18 (2).jpeg",
+      "/Iamgens ECO/Trilhas Ecologicas/WhatsApp Image 2026-05-20 at 09.00.33.jpeg"
+    ],
+    camping: [
+      "/Iamgens ECO/Camping/WhatsApp Image 2026-05-20 at 08.51.14 (1).jpeg",
+      "/Iamgens ECO/Camping/WhatsApp Image 2026-05-20 at 08.51.14 (2).jpeg",
+      "/Iamgens ECO/Camping/WhatsApp Image 2026-05-20 at 08.51.14 (3).jpeg",
+      "/Iamgens ECO/Camping/WhatsApp Image 2026-05-20 at 08.51.18 (3).jpeg",
+      "/Iamgens ECO/Camping/WhatsApp Image 2026-05-20 at 09.00.36 (2).jpeg",
+      "/Iamgens ECO/Camping/ec3.jpg",
+      "/Iamgens ECO/Camping/ec4.jpg"
+    ],
+    fogueira: [
+      "/Iamgens ECO/Fogueira/WhatsApp Image 2026-05-20 at 08.51.13.jpeg",
+      "/Iamgens ECO/Fogueira/WhatsApp Image 2026-05-20 at 08.51.15 (1).jpeg",
+      "/Iamgens ECO/Fogueira/WhatsApp Image 2026-05-20 at 08.51.15 (2).jpeg",
+      "/Iamgens ECO/Fogueira/WhatsApp Image 2026-05-20 at 08.51.15.jpeg",
+      "/Iamgens ECO/Fogueira/WhatsApp Image 2026-05-20 at 08.51.18.jpeg",
+      "/Iamgens ECO/Fogueira/ec1.jpg"
+    ],
+    kids: [
+      "/Iamgens ECO/espaço kids/WhatsApp Image 2026-05-20 at 08.51.15 (3).jpeg",
+      "/Iamgens ECO/espaço kids/WhatsApp Image 2026-05-20 at 08.51.16 (1).jpeg",
+      "/Iamgens ECO/espaço kids/WhatsApp Image 2026-05-20 at 08.51.16 (2).jpeg",
+      "/Iamgens ECO/espaço kids/WhatsApp Image 2026-05-20 at 08.51.16.jpeg",
+      "/Iamgens ECO/espaço kids/WhatsApp Image 2026-05-20 at 08.51.19.jpeg",
+      "/Iamgens ECO/espaço kids/eco12.jpeg",
+      "/Iamgens ECO/espaço kids/eco13.jpeg"
+    ],
+    sobrevivencia: [
+      "/Iamgens ECO/sobrevivencia/WhatsApp Image 2026-05-20 at 08.51.13 (1).jpeg",
+      "/Iamgens ECO/sobrevivencia/WhatsApp Image 2026-05-20 at 08.51.13 (2).jpeg",
+      "/Iamgens ECO/sobrevivencia/WhatsApp Image 2026-05-20 at 08.51.14.jpeg",
+      "/Iamgens ECO/sobrevivencia/WhatsApp Image 2026-05-20 at 08.51.21 (1).jpeg",
+      "/Iamgens ECO/sobrevivencia/WhatsApp Image 2026-05-20 at 09.00.39.jpeg",
+      "/Iamgens ECO/sobrevivencia/eco20.jpg"
+    ]
+  });
+
+  useEffect(() => {
+    fetch('/api/images')
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.error) {
+          setAdventureImages(data);
+        }
+      })
+      .catch(err => console.error("Erro ao buscar imagens dinâmicas:", err));
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -171,13 +354,8 @@ Seguem os dados da minha solicitação:
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex-1 flex justify-start">
             <a href="#home" className="flex items-center gap-2">
-              <Image 
-                src="/logo preferencial_page-0001.png" 
-                alt="Maraui Eco Park" 
-                width={320} 
-                height={100} 
-                className="h-16 md:h-24 w-auto object-contain" 
-              />
+              <TreePine className="text-brand-gold w-8 h-8" />
+              <span className="font-heading text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
             </a>
           </div>
           
@@ -218,7 +396,6 @@ Seguem os dados da minha solicitação:
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-black/90 via-brand-black/60 to-brand-black/95"></div>
         </motion.div>
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
@@ -227,8 +404,8 @@ Seguem os dados da minha solicitação:
               NATUREZA, AVENTURA E <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-orange">EXPERIÊNCIAS REAIS</span>
             </h1>
-            <p className="text-lg md:text-2xl text-brand-sand mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-              Camping, chalés, eventos, esportes e conexão verdadeira com a natureza a apenas <strong className="text-white font-semibold">7km de Teresina</strong>, no povoado Sagrador.
+            <p className="text-lg md:text-2xl text-white mb-10 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]">
+              Camping, chalés, eventos, esportes e conexão verdadeira com a natureza a apenas <span className="text-brand-gold font-black">7km de Teresina</span>, no povoado Sagrador.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a 
@@ -355,15 +532,15 @@ Seguem os dados da minha solicitação:
               >
                 <div className="space-y-4 pt-6 md:pt-12">
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/eco04.jpg" alt="Natureza" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/Camping/ec4.jpg" alt="Natureza" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="relative h-48 md:h-80 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/eco09.jpg" alt="Aventura" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/Trilhas Ecologicas/eco10.JPEG" alt="Aventura" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="relative h-48 md:h-80 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/eco07.jpg" alt="Camping" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/Camping/ec3.jpg" alt="Camping" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl bg-brand-gold flex items-center justify-center text-center p-4 md:p-8">
                      <div>
@@ -390,29 +567,33 @@ Seguem os dados da minha solicitação:
             <p className="text-brand-sand text-lg max-w-2xl mx-auto">Temos opções perfeitas tanto para quem busca relaxamento profundo quanto para quem tem sede de adrenalina.</p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
             {[
               { 
                 title: "Trilhas Ecológicas", 
-                img: [
-                  "/Iamgens ECO/eco01.PNG",
-                  "/Iamgens ECO/eco02.PNG",
-                  "/Iamgens ECO/eco08.jpeg",
-                  "/Iamgens ECO/eco05.jpeg",
-                  "/Iamgens ECO/eco10.JPEG",
-                  "/Iamgens ECO/eco11.JPEG",
-                  "/Iamgens ECO/eco20.jpg",
-                  "/Iamgens ECO/eco21.jpg"
-                ], 
+                img: adventureImages.trilhas, 
                 badge: "Aventura" 
               },
-              { title: "Camping", img: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?q=80&w=600&auto=format&fit=crop", badge: "Hospedagem" },
-              { title: "Fogueira", img: "https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=600&auto=format&fit=crop", badge: "Noturno" },
-              { title: "Casa na Árvore", img: "https://images.unsplash.com/photo-1520608552146-248107579603?q=80&w=600&auto=format&fit=crop", badge: "Kids/Família" },
-              { title: "Mirantes Naturais", img: "https://images.unsplash.com/photo-1502465771179-51f3535da42c?q=80&w=600&auto=format&fit=crop", badge: "Contemplação" },
-              { title: "Espaço Kids", img: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?q=80&w=600&auto=format&fit=crop", badge: "Lazer" },
-              { title: "Experiências Outdoor", img: "https://images.unsplash.com/photo-1533587851505-d119e131927f?q=80&w=600&auto=format&fit=crop", badge: "Esporte" },
-              { title: "Sobrevivência", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop", badge: "Radical" }
+              { 
+                title: "Camping", 
+                img: adventureImages.camping, 
+                badge: "Hospedagem" 
+              },
+              { 
+                title: "Fogueira", 
+                img: adventureImages.fogueira, 
+                badge: "Noturno" 
+              },
+              { 
+                title: "Espaço Kids", 
+                img: adventureImages.kids, 
+                badge: "Lazer" 
+              },
+              { 
+                title: "Sobrevivência", 
+                img: adventureImages.sobrevivencia, 
+                badge: "Radical" 
+              }
             ].map((item, idx) => (
               <AdventureCard 
                 key={idx}
@@ -540,9 +721,9 @@ Seguem os dados da minha solicitação:
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Casamentos ao Ar Livre", img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop" },
-              { title: "Igrejas e Retiros", img: "https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?q=80&w=800&auto=format&fit=crop" },
-              { title: "Centro de Instrução", img: "https://images.unsplash.com/photo-1510925758641-869d353cecc7?q=80&w=800&auto=format&fit=crop" }
+              { title: "Casamentos ao Ar Livre", img: "/Iamgens ECO/casamento.jpeg" },
+              { title: "Igrejas e Retiros", img: "/Iamgens ECO/igreja.jpeg" },
+              { title: "Centro de Instrução", img: "/Iamgens ECO/centro de instrução.jpeg" }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -585,10 +766,28 @@ Seguem os dados da minha solicitação:
 
           <div className="space-y-6">
             {[
-              { title: "Maraui Race", desc: "Corrida de obstáculos extrema na lama e selva.", type: "Obstáculos" },
-              { title: "Pequenos Guerreiros Kids", desc: "Aventura e superação para os pequenos aventureiros.", type: "Kids" },
-              { title: "Maraui Ultra Backyard", desc: "O Último de Pé. Resistência mental e física extrema.", type: "Ultra Maratona" },
-              { title: "Maraui Timon Bike", desc: "Trilhas técnicas e velozes para mountain bike.", type: "MTB" }
+              { 
+                title: "Maraui Race", 
+                desc: "Corrida de obstáculos extrema na lama e selva. Prova de obstáculos OCR de Nível Nacional.", 
+                type: "Obstáculos",
+                badgeExtra: "Nível Nacional" 
+              },
+              { 
+                title: "Pequenos Guerreiros Kids", 
+                desc: "Aventura e superação para os pequenos aventureiros.", 
+                type: "Kids" 
+              },
+              { 
+                title: "Maraui Ultra Backyard", 
+                desc: "O Último de Pé. Resistência mental e física extrema. Backyard Ultra é uma modalidade de nível internacional.", 
+                type: "Ultra Maratona",
+                badgeExtra: "Nível Internacional" 
+              },
+              { 
+                title: "Maraui Timon Bike", 
+                desc: "Trilhas técnicas e velozes para mountain bike.", 
+                type: "MTB" 
+              }
             ].map((prova, idx) => (
               <motion.div 
                 key={idx}
@@ -598,7 +797,14 @@ Seguem os dados da minha solicitação:
                 className="bg-white/5 border border-white/10 hover:bg-white/10 p-4 md:p-8 rounded-2xl flex justify-between items-center gap-4 transition-colors group cursor-pointer"
               >
                 <div>
-                  <span className="text-brand-gold text-xs md:text-sm font-bold uppercase tracking-widest mb-1 md:mb-2 block">{prova.type}</span>
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <span className="text-brand-gold text-xs md:text-sm font-bold uppercase tracking-widest block">{prova.type}</span>
+                    {prova.badgeExtra && (
+                      <span className="bg-brand-orange/20 text-brand-orange border border-brand-orange/30 text-[10px] md:text-xs font-bold px-3 py-0.5 rounded-full uppercase tracking-wider">
+                        {prova.badgeExtra}
+                      </span>
+                    )}
+                  </div>
                   <h3 className="font-heading text-xl sm:text-2xl md:text-4xl text-white group-hover:text-brand-orange transition-colors leading-none">{prova.title}</h3>
                   <p className="text-brand-sand mt-2 text-xs md:text-base leading-relaxed">{prova.desc}</p>
                 </div>
@@ -686,86 +892,97 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 11. RODAPÉ PREMIUM */}
-      <footer className="bg-brand-black pt-20 pb-10 px-6 text-brand-sand border-t border-white/10">
+      <footer className="bg-brand-black pt-12 pb-6 px-6 text-brand-sand border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
             <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-3">
                 <Image 
                   src="/logo preferencial_page-0001.png" 
                   alt="Maraui Eco Park" 
-                  width={360} 
-                  height={120} 
-                  className="h-24 md:h-32 w-auto object-contain" 
+                  width={270} 
+                  height={90} 
+                  className="h-16 w-auto object-contain" 
                 />
               </div>
-              <p className="text-white/60 mb-6">Hospedagem, ecoturismo e eventos em Timon - MA. Sua conexão premium com a natureza.</p>
+              <p className="text-xs text-white/50 leading-relaxed mb-4">Hospedagem, ecoturismo e eventos em Timon - MA. Sua conexão premium com a natureza.</p>
               <div className="flex gap-4 items-center">
                 <a 
                   href="https://www.instagram.com/reel/DOXFG0pjpmj/?igsh=MW90aWlmYnZzY2tuaA==" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f9ce3f] via-[#e1306c] to-[#833ab4] flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_15px_rgba(225,48,108,0.4)]"
+                  className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f9ce3f] via-[#e1306c] to-[#833ab4] flex items-center justify-center hover:scale-110 transition-all shadow-[0_0_15px_rgba(225,48,108,0.4)]"
                 >
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                  </svg>
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all hover:scale-110"
-                >
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                  </svg>
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-all hover:scale-110"
-                >
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
                   </svg>
                 </a>
               </div>
             </div>
             
             <div>
-              <h4 className="font-bold text-white uppercase tracking-widest mb-6">Links Rápidos</h4>
-              <ul className="space-y-3">
+              <h4 className="font-heading text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Links Rápidos</h4>
+              <ul className="space-y-2">
                 {['Home', 'Hospedagem', 'Natureza', 'Provas Oficiais', 'Contato'].map(link => (
-                  <li key={link}><a href="#" className="text-white/60 hover:text-brand-gold transition-colors">{link}</a></li>
+                  <li key={link}>
+                    <a href="#" className="text-xs text-white/50 hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                      {link}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-white uppercase tracking-widest mb-6">Contato</h4>
-              <ul className="space-y-3 text-white/60">
-                <li>+55 (86) 98875-9200</li>
-                <li>contato@marauiecopark.com.br</li>
-                <li>Povoado Sagrador, Timon - MA</li>
-                <li>Apenas 7km de Teresina</li>
+              <h4 className="font-heading text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Contato</h4>
+              <ul className="space-y-2 text-xs text-white/50">
+                <li className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
+                  <span>+55 (86) 98875-9200</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-brand-gold flex-shrink-0" />
+                  <a href="mailto:contato@marauiecopark.com.br" className="hover:text-brand-gold transition-colors">contato@marauiecopark.com.br</a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-brand-gold flex-shrink-0 mt-0.5" />
+                  <span>Povoado Sagrador, Timon - MA <br /><span className="text-[10px] text-white/35">(Apenas 7km de Teresina)</span></span>
+                </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-white uppercase tracking-widest mb-6">Localização</h4>
-              <div className="w-full h-32 bg-white/10 rounded-xl overflow-hidden relative">
-                {/* Placeholder for map */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <MapPin className="w-8 h-8 text-brand-gold" />
-                </div>
+              <h4 className="font-heading text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Localização</h4>
+              <div className="w-full h-24 bg-white/5 border border-white/10 rounded-2xl overflow-hidden relative group hover:border-brand-gold/30 transition-all">
+                <a 
+                  href="https://maps.google.com/?q=Povoado+Sagrador+Timon+MA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 hover:bg-black/40 transition-colors"
+                >
+                  <MapPin className="w-6 h-6 text-brand-gold mb-1 group-hover:scale-110 transition-transform" />
+                  <span className="text-[10px] text-white/60 group-hover:text-brand-gold transition-colors">Ver no Google Maps</span>
+                </a>
               </div>
             </div>
           </div>
           
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/40">
+          <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] text-white/35">
             <p>&copy; {new Date().getFullYear()} Maraui Eco Park. Todos os direitos reservados.</p>
-            <p className="mt-2 md:mt-0">Design Premium por Jody</p>
+            <div className="mt-2 md:mt-0 flex flex-wrap gap-x-2 justify-center">
+              <span>Design Premium por Jody</span>
+              <span>|</span>
+              <a 
+                href="https://camaly.com.br/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-brand-gold transition-colors"
+              >
+                Produzida com 💚 por CAMALY
+              </a>
+            </div>
           </div>
         </div>
       </footer>
