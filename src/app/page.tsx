@@ -914,16 +914,25 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 8. SUSTENTABILIDADE & NATUREZA */}
-      <section className="py-24 px-6 bg-brand-white">
-        <div className="container mx-auto max-w-7xl">
+      <section className="relative py-24 px-6 overflow-hidden">
+        <Image 
+          src="/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg" 
+          alt="Nosso Compromisso com a Natureza" 
+          fill 
+          className="object-cover" 
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-brand-black/60 z-10"></div>
+        
+        <div className="container mx-auto max-w-7xl relative z-20">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black mb-4">Nosso Compromisso com a <span className="text-brand-green">Natureza</span></h2>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-white mb-4">Nosso Compromisso com a <span className="text-brand-gold">Natureza</span></h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {['Preservação Ambiental', 'Proteção da Fauna', 'Reflorestamento', 'Educação Ecológica'].map((item, idx) => (
-              <div key={idx} className="bg-brand-sand/50 p-4 md:p-8 rounded-3xl text-center hover:bg-brand-sand transition-colors border border-brand-sand flex flex-col justify-center items-center">
-                <TreePine className="w-8 h-8 md:w-12 md:h-12 text-brand-green mx-auto mb-2 md:mb-4" />
-                <h3 className="font-heading text-lg md:text-2xl text-brand-black leading-tight">{item}</h3>
+              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-8 rounded-3xl text-center hover:bg-white/20 transition-colors flex flex-col justify-center items-center">
+                <TreePine className="w-8 h-8 md:w-12 md:h-12 text-brand-gold mx-auto mb-2 md:mb-4" />
+                <h3 className="font-heading text-lg md:text-2xl text-white leading-tight">{item}</h3>
               </div>
             ))}
           </div>
