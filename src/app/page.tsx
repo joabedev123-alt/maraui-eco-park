@@ -641,23 +641,28 @@ Seguem os dados da minha solicitação:
             {[
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg",
-                alt: "maraui race - Prova Oficial Vertical 4"
+                alt: "maraui race - Prova Oficial Vertical 4",
+                aspect: "aspect-[3/4]"
               },
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.15.23.jpeg",
-                alt: "pequenos kids - Prova Oficial Vertical 1"
+                alt: "pequenos kids - Prova Oficial Vertical 1",
+                aspect: "aspect-[3/4]"
               },
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.12.19.jpeg",
-                alt: "maraui nigt Prova - Oficial Horizontal 1"
+                alt: "maraui nigt Prova - Oficial Horizontal 1",
+                aspect: "aspect-[3/2]"
               },
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.16.33.jpeg",
-                alt: "ultra - Prova Oficial Vertical 2"
+                alt: "ultra - Prova Oficial Vertical 2",
+                aspect: "aspect-[3/4]"
               },
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.17.29.jpeg",
-                alt: "maraui timon bike - Prova Oficial Vertical 3"
+                alt: "maraui timon bike - Prova Oficial Vertical 3",
+                aspect: "aspect-[3/4]"
               }
             ].map((item, index) => (
               <motion.div
@@ -666,13 +671,13 @@ Seguem os dados da minha solicitação:
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative h-80 md:h-[400px] rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                className={`group relative rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] ${item.aspect}`}
               >
                 <Image 
                   src={item.imgSrc} 
                   alt={item.alt} 
                   fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-contain transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
