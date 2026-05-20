@@ -866,7 +866,7 @@ Seguem os dados da minha solicitação:
 
       {/* 10. CTA FINAL */}
       <section className="relative py-32 px-6 overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1504280741564-f20387b9cc0f?q=80&w=2000&auto=format&fit=crop" alt="Campfire" fill className="object-cover" />
+        <Image src="/Iamgens ECO/comunidadde.jpeg" alt="Comunidade Maraui Eco Park" fill className="object-cover" />
         <div className="absolute inset-0 bg-brand-black/70"></div>
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
           <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl text-white mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
