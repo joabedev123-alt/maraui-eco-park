@@ -636,12 +636,37 @@ Seguem os dados da minha solicitação:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {/* Linha 1: 4 Imagens Verticais / Quadradas */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {[
               "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.15.23.jpeg",
               "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.16.33.jpeg",
               "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.17.29.jpeg",
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg",
+              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg"
+            ].map((imgSrc, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50"
+              >
+                <Image 
+                  src={imgSrc} 
+                  alt={`Evento Parceiro Vertical ${index + 1}`} 
+                  fill 
+                  className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Linha 2: 2 Imagens Horizontais */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
               "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg",
               "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.12.19.jpeg"
             ].map((imgSrc, index) => (
@@ -650,15 +675,15 @@ Seguem os dados da minha solicitação:
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
+                transition={{ delay: (index + 4) * 0.05 }}
                 className="group relative h-64 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50"
               >
                 <Image 
                   src={imgSrc} 
-                  alt={`Evento Parceiro ${index + 1}`} 
+                  alt={`Evento Parceiro Horizontal ${index + 1}`} 
                   fill 
                   className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
