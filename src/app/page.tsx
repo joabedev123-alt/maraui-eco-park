@@ -920,7 +920,7 @@ Seguem os dados da minha solicitação:
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:w-1/2 w-full relative h-[300px] md:h-[550px] rounded-3xl overflow-hidden shadow-2xl"
+              className="lg:w-1/2 w-full relative aspect-[3/2] rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image 
                 src="/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg" 
