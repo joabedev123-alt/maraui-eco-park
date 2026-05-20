@@ -632,7 +632,7 @@ Seguem os dados da minha solicitação:
               Eventos de <span className="text-brand-gold">Parceiros</span>
             </h2>
             <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-              Veja alguns dos momentos incríveis realizados por nossos parceiros e comunidade no Maraui Eco Park.
+              Alguns dos eventos que nossos parceiros realizam aqui no nosso espaço
             </p>
           </div>
 
