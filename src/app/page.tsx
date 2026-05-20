@@ -955,15 +955,24 @@ Seguem os dados da minha solicitação:
 
             <div>
               <h4 className="font-heading text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Localização</h4>
-              <div className="w-full h-24 bg-white/5 border border-white/10 rounded-2xl overflow-hidden relative group hover:border-brand-gold/30 transition-all">
+              <div className="w-full h-32 bg-white/5 border border-white/10 rounded-2xl overflow-hidden relative group hover:border-brand-gold/30 transition-all">
+                <iframe 
+                  src="https://maps.google.com/maps?q=-5.1337614,-42.8915558&z=15&output=embed" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }} 
+                  allowFullScreen={false} 
+                  loading="lazy"
+                  title="Maraui Eco Park Localização"
+                ></iframe>
                 <a 
-                  href="https://maps.google.com/?q=Povoado+Sagrador+Timon+MA" 
+                  href="https://www.google.com/maps/place/5%C2%B008'01.5%22S+42%C2%B053'29.6%22W/@-5.1337614,-42.8941307,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-5.1337614!4d-42.8915558?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 hover:bg-black/40 transition-colors"
+                  className="absolute bottom-2 right-2 bg-brand-black/80 hover:bg-brand-orange text-white text-[9px] font-bold px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1 shadow-md"
                 >
-                  <MapPin className="w-6 h-6 text-brand-gold mb-1 group-hover:scale-110 transition-transform" />
-                  <span className="text-[10px] text-white/60 group-hover:text-brand-gold transition-colors">Ver no Google Maps</span>
+                  <MapPin className="w-3 h-3 text-brand-gold" />
+                  <span>Ver no Google Maps</span>
                 </a>
               </div>
             </div>
