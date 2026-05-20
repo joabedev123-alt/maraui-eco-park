@@ -651,13 +651,13 @@ Seguem os dados da minha solicitação:
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative h-64 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300"
+                className="group relative h-64 rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50"
               >
                 <Image 
                   src={imgSrc} 
                   alt={`Evento Parceiro ${index + 1}`} 
                   fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
