@@ -532,15 +532,15 @@ Seguem os dados da minha solicitação:
               >
                 <div className="space-y-4 pt-6 md:pt-12">
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/Camping/ec4.jpg" alt="Natureza" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/eco04.jpg" alt="Natureza" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="relative h-48 md:h-80 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/Trilhas Ecologicas/eco10.JPEG" alt="Aventura" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/eco09.jpg" alt="Aventura" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="relative h-48 md:h-80 rounded-3xl overflow-hidden shadow-2xl">
-                    <Image src="/Iamgens ECO/Camping/ec3.jpg" alt="Camping" fill className="object-cover hover:scale-110 transition-transform duration-700" />
+                    <Image src="/Iamgens ECO/eco07.jpg" alt="Camping" fill className="object-cover hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="relative h-40 md:h-64 rounded-3xl overflow-hidden shadow-2xl bg-brand-gold flex items-center justify-center text-center p-4 md:p-8">
                      <div>
