@@ -826,7 +826,7 @@ Seguem os dados da minha solicitação:
                     href={item.waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg"
+                    className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 transform translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg"
                   >
                     <span>Orçamento / Info</span>
                     <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -930,9 +930,9 @@ Seguem os dados da minha solicitação:
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {['Preservação Ambiental', 'Proteção da Fauna', 'Reflorestamento', 'Educação Ecológica'].map((item, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-8 rounded-3xl text-center hover:bg-white/20 transition-colors flex flex-col justify-center items-center">
+              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-3 sm:p-4 md:p-8 rounded-3xl text-center hover:bg-white/20 transition-colors flex flex-col justify-center items-center">
                 <TreePine className="w-8 h-8 md:w-12 md:h-12 text-brand-gold mx-auto mb-2 md:mb-4" />
-                <h3 className="font-heading text-lg md:text-2xl text-white leading-tight">{item}</h3>
+                <h3 className="font-heading text-sm sm:text-lg md:text-2xl text-white leading-tight">{item}</h3>
               </div>
             ))}
           </div>
