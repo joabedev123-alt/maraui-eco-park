@@ -619,7 +619,7 @@ Seguem os dados da minha solicitação:
         </div>
       </section>
 
-      {/* SEÇÃO EVENTOS DE PARCEIROS */}
+      {/* SEÇÃO PROVAS OFICIAIS */}
       <section className="py-20 px-6 bg-brand-white">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
@@ -629,61 +629,51 @@ Seguem os dados da minha solicitação:
               <span className="w-12 h-px bg-brand-orange"></span>
             </div>
             <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black leading-none">
-              Eventos de <span className="text-brand-gold">Parceiros</span>
+              Provas Oficiais <span className="text-brand-gold">Marauí Eco Park</span>
             </h2>
             <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-              Alguns dos eventos que nossos parceiros realizam aqui no nosso espaço
+              Eventos oficiais organizados pelo Marauí Eco Park
             </p>
           </div>
 
-          {/* Linha 1: 4 Imagens Verticais / Quadradas */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {/* Grid de Eventos / Provas em Ordem */}
+          <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
             {[
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.15.23.jpeg",
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.16.33.jpeg",
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.17.29.jpeg",
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg"
-            ].map((imgSrc, index) => (
+              {
+                imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg",
+                alt: "maraui race - Prova Oficial Vertical 4"
+              },
+              {
+                imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.15.23.jpeg",
+                alt: "pequenos kids - Prova Oficial Vertical 1"
+              },
+              {
+                imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.12.19.jpeg",
+                alt: "maraui nigt Prova - Oficial Horizontal 1"
+              },
+              {
+                imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.16.33.jpeg",
+                alt: "ultra - Prova Oficial Vertical 2"
+              },
+              {
+                imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.17.29.jpeg",
+                alt: "maraui timon bike - Prova Oficial Vertical 3"
+              }
+            ].map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative aspect-[3/4] rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50"
+                className="group relative h-80 md:h-[400px] rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50 w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
               >
                 <Image 
-                  src={imgSrc} 
-                  alt={`Evento Parceiro Vertical ${index + 1}`} 
+                  src={item.imgSrc} 
+                  alt={item.alt} 
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Linha 2: 2 Imagens Horizontais */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg",
-              "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.12.19.jpeg"
-            ].map((imgSrc, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (index + 4) * 0.05 }}
-                className="group relative aspect-[3/2] rounded-3xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 bg-gray-50"
-              >
-                <Image 
-                  src={imgSrc} 
-                  alt={`Evento Parceiro Horizontal ${index + 1}`} 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, 50vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
@@ -914,27 +904,64 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 8. SUSTENTABILIDADE & NATUREZA */}
-      <section className="relative py-24 px-6 overflow-hidden">
-        <Image 
-          src="/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg" 
-          alt="Nosso Compromisso com a Natureza" 
-          fill 
-          className="object-cover" 
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-brand-black/60 z-10"></div>
-        
+      <section className="py-24 px-6 bg-brand-black text-white relative overflow-hidden">
+        {/* Background Texture */}
+        <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
+
         <div className="container mx-auto max-w-7xl relative z-20">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-white mb-4">Nosso Compromisso com a <span className="text-brand-gold">Natureza</span></h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {['Preservação Ambiental', 'Proteção da Fauna', 'Reflorestamento', 'Educação Ecológica'].map((item, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md border border-white/20 p-3 sm:p-4 md:p-8 rounded-3xl text-center hover:bg-white/20 transition-colors flex flex-col justify-center items-center">
-                <TreePine className="w-8 h-8 md:w-12 md:h-12 text-brand-gold mx-auto mb-2 md:mb-4" />
-                <h3 className="font-heading text-sm sm:text-lg md:text-2xl text-white leading-tight">{item}</h3>
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+            {/* Imagem Lateral */}
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 w-full relative h-[300px] md:h-[550px] rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <Image 
+                src="/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 17.11.22.jpeg" 
+                alt="Nosso Compromisso com a Natureza" 
+                fill 
+                className="object-cover hover:scale-105 transition-transform duration-700" 
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent"></div>
+            </motion.div>
+
+            {/* Conteúdo */}
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 w-full space-y-8"
+            >
+              <div>
+                <div className="flex items-center gap-4 text-brand-gold font-bold tracking-widest uppercase text-sm mb-4">
+                  <span className="w-12 h-px bg-brand-gold"></span>
+                  Sustentabilidade
+                </div>
+                <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-white leading-none">
+                  Nosso Compromisso com a <span className="text-brand-gold">Natureza</span>
+                </h2>
+                <p className="text-gray-400 mt-6 text-lg leading-relaxed">
+                  Buscamos equilibrar o ecoturismo com a preservação. Nossa missão é manter o ecossistema local vivo, oferecendo um espaço onde a natureza e o ser humano convivam em perfeita harmonia.
+                </p>
               </div>
-            ))}
+
+              {/* Cards de Compromisso */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                {[
+                  'Preservação Ambiental', 
+                  'Proteção da Fauna', 
+                  'Reflorestamento', 
+                  'Educação Ecológica'
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl hover:bg-white/10 transition-colors flex flex-col justify-start items-start">
+                    <TreePine className="w-8 h-8 text-brand-gold mb-3" />
+                    <h3 className="font-heading text-base sm:text-lg md:text-xl text-white leading-snug">{item}</h3>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
