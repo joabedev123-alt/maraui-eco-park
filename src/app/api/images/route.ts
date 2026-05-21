@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     const publicDir = path.join(process.cwd(), 'public');
@@ -15,8 +17,7 @@ export async function GET() {
       return files
         .filter(file => {
           const ext = path.extname(file).toLowerCase();
-          // Filtra apenas formatos web suportados nativamente (evitando HEIC que quebra no navegador e MP4 que é vídeo)
-          return ['.jpg', '.jpeg', '.png', '.webp', '.png'].includes(ext);
+          return ['.jpg', '.jpeg', '.png', '.webp'].includes(ext);
         })
         .map(file => `/Iamgens ECO/${folderName}/${file}`);
     };

@@ -15,7 +15,6 @@ import {
   Flame, 
   Wifi, 
   ShieldCheck, 
-  Play,
   Menu,
   X,
   Phone,
@@ -353,8 +352,14 @@ Seguem os dados da minha solicitação:
       <nav className={`fixed w-full z-50 transition-all duration-500 transform ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg -translate-y-full' : 'bg-transparent py-4 translate-y-0'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex-1 flex justify-start">
-            <a href="#home" className="flex items-center gap-2">
-              <TreePine className="text-brand-gold w-8 h-8" />
+            <a href="#home" className="flex items-center gap-3">
+              <Image
+                src="/logo preferencial_page-0001.png"
+                alt="Maraui Eco Park"
+                width={160}
+                height={54}
+                className="h-14 w-auto object-contain"
+              />
               <span className="font-heading text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
             </a>
           </div>
@@ -1093,12 +1098,12 @@ Seguem os dados da minha solicitação:
             <div>
               <h4 className="font-heading text-xs font-bold text-brand-gold uppercase tracking-wider mb-4">Localização</h4>
               <div className="w-full h-32 bg-white/5 border border-white/10 rounded-2xl overflow-hidden relative group hover:border-brand-gold/30 transition-all">
-                <iframe 
-                  src="https://maps.google.com/maps?q=-5.1337614,-42.8915558&z=15&output=embed" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }} 
-                  allowFullScreen={false} 
+                <iframe
+                  src="https://maps.google.com/maps?q=-5.1337614,-42.8915558&z=15&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
                   loading="lazy"
                   title="Maraui Eco Park Localização"
                 ></iframe>
@@ -1133,15 +1138,30 @@ Seguem os dados da minha solicitação:
         </div>
       </footer>
 
-      {/* FLOATING WHATSAPP */}
-      <a 
-        href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Maraui%20Eco%20Park."
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 transition-transform"
-      >
-        <Phone className="w-8 h-8" />
-      </a>
+      {/* FLOATING BUTTONS */}
+      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+        <a
+          href="https://www.google.com/maps/place/5%C2%B008'01.5%22S+42%C2%B053'29.6%22W/@-5.1337614,-42.8941307,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-5.1337614!4d-42.8915558?hl=pt-BR&entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-white rounded-full shadow-[0_0_20px_rgba(66,133,244,0.5)] flex items-center justify-center hover:scale-110 transition-transform"
+          aria-label="Ver no Google Maps"
+        >
+          <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/>
+            <circle cx="12" cy="9" r="2.5" fill="white"/>
+          </svg>
+        </a>
+        <a
+          href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Maraui%20Eco%20Park."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-green-500 rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] flex items-center justify-center text-white hover:scale-110 transition-transform"
+          aria-label="Falar no WhatsApp"
+        >
+          <Phone className="w-7 h-7" />
+        </a>
+      </div>
     </main>
   );
 }

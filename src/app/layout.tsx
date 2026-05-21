@@ -16,11 +16,6 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Maraui Eco Park - Natureza, Aventura e Experiências Inesquecíveis",
   description: "Hospedagem, ecoturismo, eventos e experiências outdoor localizado em Timon - Maranhão.",
-  icons: {
-    icon: "/logo preferencial_page-0001.png",
-    shortcut: "/logo preferencial_page-0001.png",
-    apple: "/logo preferencial_page-0001.png",
-  }
 };
 
 export default function RootLayout({
