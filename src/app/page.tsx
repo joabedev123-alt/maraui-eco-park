@@ -352,15 +352,15 @@ Seguem os dados da minha solicitação:
       <nav className={`fixed w-full z-50 transition-all duration-500 transform ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg -translate-y-full' : 'bg-transparent py-4 translate-y-0'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="flex-1 flex justify-start">
-            <a href="#home" className="flex items-center gap-3">
+            <a href="#home" className="flex items-center gap-2">
               <Image
                 src="/logo preferencial_page-0001.png"
                 alt="Maraui Eco Park"
-                width={160}
-                height={54}
-                className="h-14 w-auto object-contain"
+                width={280}
+                height={96}
+                className="h-12 sm:h-16 md:h-24 w-auto object-contain"
               />
-              <span className="font-heading text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
+              <span className="hidden sm:inline font-heading text-xl md:text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
             </a>
           </div>
           
@@ -438,7 +438,7 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 2. BUSCA / RESERVA (FLOATING BAR) */}
-      <div className="relative z-30 max-w-6xl mx-auto px-4 -mt-10 sm:-mt-16 mb-20">
+      <div className="relative z-30 max-w-6xl mx-auto px-4 -mt-6 sm:-mt-16 mb-12 md:mb-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -498,9 +498,9 @@ Seguem os dados da minha solicitação:
       </div>
 
       {/* 3. SOBRE O MARAUI ECO PARK */}
-      <section id="sobre" className="py-20 px-6 overflow-hidden">
+      <section id="sobre" className="py-12 md:py-20 px-4 md:px-6 overflow-hidden">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -562,14 +562,14 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 4. EXPERIÊNCIAS & AVENTURAS */}
-      <section id="natureza" className="py-24 bg-brand-black text-white relative">
+      <section id="natureza" className="py-14 md:py-24 bg-brand-black text-white relative">
         {/* Background Texture */}
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
         
         <div className="container mx-auto max-w-7xl px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl mb-4">Escolha sua <span className="text-brand-orange">Aventura</span></h2>
-            <p className="text-brand-sand text-lg max-w-2xl mx-auto">Temos opções perfeitas tanto para quem busca relaxamento profundo quanto para quem tem sede de adrenalina.</p>
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="font-heading text-3xl sm:text-6xl md:text-7xl mb-3 md:mb-4">Escolha sua <span className="text-brand-orange">Aventura</span></h2>
+            <p className="text-brand-sand text-base md:text-lg max-w-2xl mx-auto">Temos opções perfeitas tanto para quem busca relaxamento profundo quanto para quem tem sede de adrenalina.</p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -625,15 +625,15 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* SEÇÃO PROVAS OFICIAIS */}
-      <section className="py-20 px-6 bg-brand-white">
+      <section className="py-12 md:py-20 px-4 md:px-6 bg-brand-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-4 text-brand-orange font-bold tracking-widest uppercase text-sm mb-3">
-              <span className="w-12 h-px bg-brand-orange"></span>
+          <div className="text-center mb-8 md:mb-12">
+            <div className="flex items-center justify-center gap-3 md:gap-4 text-brand-orange font-bold tracking-widest uppercase text-xs md:text-sm mb-3">
+              <span className="w-8 md:w-12 h-px bg-brand-orange"></span>
               Integração e Comunidade
-              <span className="w-12 h-px bg-brand-orange"></span>
+              <span className="w-8 md:w-12 h-px bg-brand-orange"></span>
             </div>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black leading-none">
+            <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-black leading-none">
               Provas Oficiais <span className="text-brand-gold">Marauí Eco Park</span>
             </h2>
             <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
@@ -693,9 +693,9 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 5. HOSPEDAGEM PREMIUM */}
-      <section id="hospedagem" className="py-24 px-6 bg-brand-sand overflow-hidden">
+      <section id="hospedagem" className="py-14 md:py-24 px-4 md:px-6 bg-brand-sand overflow-hidden">
         <div className="container mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -785,29 +785,34 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 6. EVENTOS & LOCAÇÕES */}
-      <section id="eventos" className="py-24 px-6 bg-brand-white">
+      <section id="eventos" className="py-14 md:py-24 px-4 md:px-6 bg-brand-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black mb-4">Cenário Perfeito para <span className="text-brand-gold">Seu Evento</span></h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">De celebrações íntimas a grandes encontros, o Maraui Eco Park oferece a infraestrutura e a beleza natural para momentos marcantes.</p>
+          <div className="text-center mb-8 md:mb-16">
+            <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-black mb-3 md:mb-4">Cenário Perfeito para <span className="text-brand-gold">Seu Evento</span></h2>
+            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">De celebrações íntimas a grandes encontros, o Maraui Eco Park oferece a infraestrutura e a beleza natural para momentos marcantes.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                title: "Casamentos ao Ar Livre", 
+              {
+                title: "Casamentos ao Ar Livre",
                 img: "/Iamgens ECO/casamento.jpeg",
                 waLink: "https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20e%20or%C3%A7amentos%20sobre%20a%20realiza%C3%A7%C3%A3o%20de%20Casamentos%20ao%20Ar%20Livre%20no%20Maraui%20Eco%20Park."
               },
-              { 
-                title: "Igrejas e Retiros", 
+              {
+                title: "Igrejas e Retiros",
                 img: "/Iamgens ECO/igreja.jpeg",
                 waLink: "https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20e%20or%C3%A7amentos%20para%20eventos%20de%20Igrejas%20e%20Retiros%20no%20Maraui%20Eco%20Park."
               },
-              { 
-                title: "Centro de Instrução", 
+              {
+                title: "Centro de Instrução",
                 img: "/Iamgens ECO/centro de instrução.jpeg",
                 waLink: "https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Centro%20de%20Instru%C3%A7%C3%A3o%20no%20Maraui%20Eco%20Park%20para%20cursos%2Ftreinamentos."
+              },
+              {
+                title: "Faça sua Prova no Nosso Espaço",
+                img: "/Iamgens ECO/corrida do choque.jpeg",
+                waLink: "https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20realizar%20uma%20prova%20ou%20evento%20esportivo%20no%20Maraui%20Eco%20Park."
               }
             ].map((item, idx) => (
               <motion.div 
@@ -841,19 +846,19 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 7. PROVAS OFICIAIS MARAUI */}
-      <section id="provas" className="py-24 px-6 bg-brand-green-dark text-white relative overflow-hidden">
+      <section id="provas" className="py-14 md:py-24 px-4 md:px-6 bg-brand-green-dark text-white relative overflow-hidden">
         <div className="absolute right-0 top-0 opacity-10 pointer-events-none">
           <svg width="800" height="800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-4 md:gap-6">
             <div>
-              <div className="flex items-center gap-4 text-brand-gold font-bold tracking-widest uppercase text-sm mb-4">
+              <div className="flex items-center gap-4 text-brand-gold font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
                 <span className="w-12 h-px bg-brand-gold"></span>
                 Adrenalina Pura
               </div>
-              <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl leading-none">PROVAS <br/><span className="text-brand-orange">OFICIAIS</span></h2>
+              <h2 className="font-heading text-3xl sm:text-6xl md:text-8xl leading-none">PROVAS <br/><span className="text-brand-orange">OFICIAIS</span></h2>
             </div>
             <p className="text-brand-sand max-w-md text-lg">
               Sediamos as competições mais desafiadoras da região. Teste seus limites em nossos percursos exclusivos na natureza.
@@ -914,7 +919,7 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 8. SUSTENTABILIDADE & NATUREZA */}
-      <section className="py-24 px-6 bg-brand-black text-white relative overflow-hidden">
+      <section className="py-14 md:py-24 px-4 md:px-6 bg-brand-black text-white relative overflow-hidden">
         {/* Background Texture */}
         <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
 
@@ -977,9 +982,9 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 9. DEPOIMENTOS */}
-      <section className="py-24 px-6 bg-brand-sand relative overflow-hidden">
+      <section className="py-14 md:py-24 px-4 md:px-6 bg-brand-sand relative overflow-hidden">
         <div className="container mx-auto max-w-7xl relative z-10">
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black text-center mb-16">O que dizem nossos <span className="text-brand-orange">Aventureiros</span></h2>
+          <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-black text-center mb-8 md:mb-16">O que dizem nossos <span className="text-brand-orange">Aventureiros</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((_, idx) => (
               <motion.div 
@@ -1007,11 +1012,11 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 10. CTA FINAL */}
-      <section className="relative py-32 px-6 overflow-hidden">
+      <section className="relative py-20 md:py-32 px-4 md:px-6 overflow-hidden">
         <Image src="/Iamgens ECO/comunidadde.jpeg" alt="Comunidade Maraui Eco Park" fill className="object-cover" />
         <div className="absolute inset-0 bg-brand-black/40"></div>
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
-          <h2 className="font-heading text-4xl sm:text-6xl md:text-8xl text-white mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
+          <h2 className="font-heading text-3xl sm:text-6xl md:text-8xl text-white mb-4 md:mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a 
               href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
@@ -1034,7 +1039,7 @@ Seguem os dados da minha solicitação:
       </section>
 
       {/* 11. RODAPÉ PREMIUM */}
-      <footer className="bg-brand-black pt-12 pb-6 px-6 text-brand-sand border-t border-white/10">
+      <footer className="bg-brand-black pt-10 md:pt-12 pb-6 px-4 md:px-6 text-brand-sand border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
             <div className="col-span-1 md:col-span-1">
