@@ -814,7 +814,7 @@ Seguem os dados da minha solicitação:
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group relative h-80 md:h-[400px] rounded-3xl overflow-hidden shadow-xl"
+                className="group relative h-60 md:h-[300px] rounded-3xl overflow-hidden shadow-xl"
               >
                 <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/95 via-brand-black/30 to-transparent"></div>
@@ -842,7 +842,7 @@ Seguem os dados da minha solicitação:
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative w-full rounded-3xl overflow-hidden shadow-xl"
+            className="group relative w-full rounded-3xl overflow-hidden shadow-xl max-h-[420px] md:max-h-[500px]"
           >
             <Image
               src="/Iamgens ECO/choque evento.jpeg"
