@@ -350,9 +350,9 @@ Seguem os dados da minha solicitação:
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-500 transform ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg -translate-y-full' : 'bg-transparent py-4 translate-y-0'}`}>
         <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo + nome (desktop) */}
           <div className="flex-shrink-0">
-            <a href="#home">
+            <a href="#home" className="flex items-center gap-2">
               <Image
                 src="/logo preferencial_page-0001.png"
                 alt="Maraui Eco Park"
@@ -360,10 +360,11 @@ Seguem os dados da minha solicitação:
                 height={96}
                 className="h-12 sm:h-16 md:h-24 w-auto object-contain"
               />
+              <span className="hidden md:inline font-heading text-xl md:text-2xl tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
             </a>
           </div>
 
-          {/* Centro: texto no mobile | links no desktop */}
+          {/* Centro: nome centralizado no mobile | links no desktop */}
           <div className="flex-1 flex items-center justify-center">
             <span className="md:hidden font-heading text-lg tracking-wider text-white">MARAUI <span className="text-brand-gold">ECO PARK</span></span>
             <div className="hidden md:flex items-center gap-8">
