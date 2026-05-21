@@ -349,7 +349,7 @@ Seguem os dados da minha solicitação:
       
       {/* NAVBAR */}
       <nav className={`fixed w-full z-50 transition-all duration-500 transform ${isScrolled ? 'bg-brand-black/95 backdrop-blur-md py-2 shadow-lg -translate-y-full' : 'bg-transparent py-4 translate-y-0'}`}>
-        <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
           <div className="flex-1 flex justify-start">
             <a href="#home" className="flex items-center gap-2">
               <Image
@@ -404,11 +404,11 @@ Seguem os dados da minha solicitação:
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
           <motion.div initial="hidden" animate="visible" variants={FADE_UP}>
-            <h1 className="font-heading text-4xl sm:text-6xl md:text-8xl lg:text-9xl text-white mb-6 drop-shadow-2xl leading-none">
+            <h1 className="font-heading text-3xl sm:text-6xl md:text-8xl lg:text-9xl text-white mb-4 md:mb-6 drop-shadow-2xl leading-none">
               NATUREZA, AVENTURA E <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-orange">EXPERIÊNCIAS REAIS</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white mb-10 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]">
+            <p className="text-base md:text-2xl text-white mb-6 md:mb-10 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]">
               Camping, chalés, eventos, esportes e conexão verdadeira com a natureza a apenas <span className="text-brand-gold font-black">7km de Teresina</span>, no povoado Sagrador.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mt-6 md:mt-10">
@@ -504,26 +504,26 @@ Seguem os dados da minha solicitação:
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="lg:w-1/2 space-y-8"
+              className="lg:w-1/2 space-y-5 md:space-y-8"
             >
               <div className="flex items-center gap-4 text-brand-orange font-bold tracking-widest uppercase text-sm">
                 <span className="w-12 h-px bg-brand-orange"></span>
                 Sobre o Parque
               </div>
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-green-dark leading-none">
+              <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-green-dark leading-none">
                 Refúgio Perfeito <br/><span className="text-brand-orange">Perto da Cidade</span>
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 O Maraui Eco Park é um espaço criado para quem deseja viver experiências reais em meio à natureza. Localizado no povoado Sagrador, em Timon - Maranhão, oferecemos hospedagem, aventuras, eventos e experiências inesquecíveis para famílias, grupos, igrejas e atletas.
               </p>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 Aqui você encontra conforto, adrenalina, liberdade e contato verdadeiro com a natureza em um ambiente seguro, familiar e acolhedor.
               </p>
-              <a 
+              <a
                 href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20mais%20experi%C3%AAncias%20de%20ecoturismo%20no%20Maraui%20Eco%20Park."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-brand-green-dark text-brand-green-dark hover:bg-brand-green-dark hover:text-white px-8 py-4 rounded-full font-bold tracking-widest uppercase transition-colors flex items-center gap-2 inline-flex w-fit"
+                className="border-2 border-brand-green-dark text-brand-green-dark hover:bg-brand-green-dark hover:text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold tracking-widest uppercase transition-colors flex items-center gap-2 inline-flex w-fit text-sm"
               >
                 Conhecer Experiências <ChevronRight className="w-5 h-5" />
               </a>
@@ -565,7 +565,7 @@ Seguem os dados da minha solicitação:
         {/* Background Texture */}
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
         
-        <div className="container mx-auto max-w-7xl px-6 relative z-10">
+        <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="font-heading text-3xl sm:text-6xl md:text-7xl mb-3 md:mb-4">Escolha sua <span className="text-brand-orange">Aventura</span></h2>
             <p className="text-brand-sand text-base md:text-lg max-w-2xl mx-auto">Temos opções perfeitas tanto para quem busca relaxamento profundo quanto para quem tem sede de adrenalina.</p>
@@ -610,12 +610,12 @@ Seguem os dados da minha solicitação:
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <a 
+          <div className="mt-8 md:mt-16 text-center">
+            <a
               href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aventura%20no%20Maraui%20Eco%20Park."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-green hover:bg-brand-green/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(47,107,69,0.4)] inline-flex items-center gap-3"
+              className="bg-brand-green hover:bg-brand-green/90 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-[0_0_30px_rgba(47,107,69,0.4)] inline-flex items-center gap-3"
             >
               <Phone className="w-5 h-5" /> Quero falar no WhatsApp
             </a>
@@ -635,13 +635,13 @@ Seguem os dados da minha solicitação:
             <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-black leading-none">
               Provas Oficiais <span className="text-brand-gold">Marauí Eco Park</span>
             </h2>
-            <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-600 mt-3 text-base md:text-lg max-w-2xl mx-auto">
               Eventos oficiais organizados pelo Marauí Eco Park
             </p>
           </div>
 
           {/* Grid de Eventos / Provas em Ordem */}
-          <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 max-w-6xl mx-auto">
             {[
               {
                 imgSrc: "/Iamgens ECO/eventos/WhatsApp Image 2026-05-20 at 15.20.42.jpeg",
@@ -740,12 +740,12 @@ Seguem os dados da minha solicitação:
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:w-1/2 space-y-8"
+              className="lg:w-1/2 space-y-5 md:space-y-8"
             >
-              <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-brand-black leading-none">
+              <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-brand-black leading-none">
                 Conforto em <br/><span className="text-brand-orange">Meio à Natureza</span>
               </h2>
-              <p className="text-gray-700 text-lg">
+              <p className="text-gray-700 text-base md:text-lg">
                 Desperte com o canto dos pássaros e durma sob um céu estrelado. Nossas acomodações foram desenhadas para oferecer o equilíbrio perfeito entre o rústico e o conforto moderno.
               </p>
               
@@ -767,12 +767,12 @@ Seguem os dados da minha solicitação:
                 ))}
               </div>
 
-              <div className="pt-6">
-                <a 
+              <div className="pt-4 md:pt-6">
+                <a
                   href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20garantir%20minha%20reserva%20de%20hospedagem%20no%20Maraui%20Eco%20Park."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-brand-black hover:bg-brand-black/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-xl inline-block"
+                  className="bg-brand-black hover:bg-brand-black/90 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-xl inline-block"
                 >
                   Garantir Reserva
                 </a>
