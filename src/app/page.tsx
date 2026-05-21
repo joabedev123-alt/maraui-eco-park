@@ -848,7 +848,7 @@ Seguem os dados da minha solicitação:
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative w-full rounded-3xl overflow-hidden shadow-xl max-h-[420px] md:max-h-[500px]"
+            className="group relative w-full rounded-3xl overflow-hidden shadow-xl"
           >
             <Image
               src="/Iamgens ECO/corrida do choque.jpeg"
@@ -856,7 +856,7 @@ Seguem os dados da minha solicitação:
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-auto block mx-auto transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/20 to-transparent flex flex-col items-center justify-end pb-8 md:pb-12 text-center px-6">
               <h3 className="font-heading text-2xl md:text-4xl text-white mb-2 leading-none">Faça sua Prova no Nosso Espaço</h3>
