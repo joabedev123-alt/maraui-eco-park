@@ -842,26 +842,24 @@ Seguem os dados da minha solicitação:
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative w-full rounded-3xl overflow-hidden shadow-xl bg-brand-black"
+            className="group relative w-full rounded-3xl overflow-hidden shadow-xl"
           >
-            <div className="relative w-full h-[360px] md:h-[520px]">
-              <Image
-                src="/Iamgens ECO/choque evento.jpeg"
-                alt="Faça sua Prova no Nosso Espaço"
-                fill
-                className="object-contain transition-transform duration-700 group-hover:scale-105"
-                sizes="100vw"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-transparent to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex flex-col items-start z-20">
+            <Image
+              src="/Iamgens ECO/choque evento.jpeg"
+              alt="Faça sua Prova no Nosso Espaço"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/20 to-transparent flex flex-col items-center justify-end pb-8 md:pb-12 text-center px-6">
               <h3 className="font-heading text-2xl md:text-4xl text-white mb-2 leading-none">Faça sua Prova no Nosso Espaço</h3>
-              <div className="h-1 w-12 bg-brand-gold transition-all duration-300 group-hover:w-64 mb-4"></div>
+              <div className="h-1 w-12 bg-brand-gold transition-all duration-300 group-hover:w-48 mb-4 mx-auto"></div>
               <a
                 href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20realizar%20uma%20prova%20ou%20evento%20esportivo%20no%20Maraui%20Eco%20Park."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg"
+                className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 shadow-lg"
               >
                 <span>Orçamento / Info</span>
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
