@@ -809,7 +809,7 @@ Seguem os dados da minha solicitação:
               },
               {
                 title: "Faça sua Prova no Nosso Espaço",
-                img: "/Iamgens ECO/corrida do choque.jpeg",
+                img: "/Iamgens ECO/choque evento.jpeg",
                 waLink: "https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20realizar%20uma%20prova%20ou%20evento%20esportivo%20no%20Maraui%20Eco%20Park."
               }
             ].map((item, idx) => (
