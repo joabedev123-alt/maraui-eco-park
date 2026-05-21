@@ -127,20 +127,20 @@ function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps)
         </div>
 
         {/* Setas pequenas manuais no card */}
-        <button 
+        <button
           onClick={handlePrev}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
           aria-label="Imagem anterior"
         >
-          <ChevronLeft className="w-4 h-4 md:w-5 h-5" />
+          <ChevronLeft className="w-4 h-4" />
         </button>
 
-        <button 
+        <button
           onClick={handleNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-brand-orange text-white p-1 rounded-full transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
           aria-label="Próxima imagem"
         >
-          <ChevronRight className="w-4 h-4 md:w-5 h-5" />
+          <ChevronRight className="w-4 h-4" />
         </button>
 
         {/* Dots indicadores de imagem */}
@@ -220,7 +220,6 @@ function AdventureCard({ title, img, badge, idx, isMobile }: AdventureCardProps)
 const hospedagemMedia = [
   { type: 'image', src: '/Iamgens ECO/Camping/eco03.jpg' },
   { type: 'image', src: '/Iamgens ECO/Camping/ec3.jpg' },
-  { type: 'video', src: '/Iamgens ECO/Camping/eco06.MP4' },
   { type: 'image', src: '/Iamgens ECO/Camping/ec4.jpg' },
   { type: 'image', src: '/Iamgens ECO/Camping/ec5.jpeg' },
   { type: 'image', src: '/Iamgens ECO/espaço kids/eco12.jpeg' },
@@ -412,20 +411,20 @@ Seguem os dados da minha solicitação:
             <p className="text-lg md:text-2xl text-white mb-10 max-w-3xl mx-auto font-bold leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]">
               Camping, chalés, eventos, esportes e conexão verdadeira com a natureza a apenas <span className="text-brand-gold font-black">7km de Teresina</span>, no povoado Sagrador.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center mt-6 md:mt-10">
+              <a
                 href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center"
+                className="bg-brand-orange hover:bg-brand-orange/90 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all hover:shadow-[0_10px_40px_rgba(201,106,43,0.5)] flex items-center gap-2 w-full sm:w-auto justify-center"
               >
                 Reservar Agora <ChevronRight className="w-5 h-5" />
               </a>
-              <a 
+              <a
                 href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20hospedagens%20e%20atividades%20do%20Maraui%20Eco%20Park."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform hover:-translate-y-1 w-full sm:w-auto justify-center flex items-center gap-2"
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto justify-center flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" /> Falar no WhatsApp
               </a>
@@ -730,7 +729,6 @@ Seguem os dados da minha solicitação:
                   )}
                 </motion.div>
               ))}
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/60 to-transparent z-10"></div>
               <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-white/20 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-white/30 text-white z-20">
                 <Star className="w-6 h-6 md:w-8 md:h-8 text-brand-gold mb-1 md:mb-2 fill-brand-gold" />
                 <p className="font-heading text-xl md:text-3xl">Conforto Rústico</p>
@@ -950,14 +948,14 @@ Seguem os dados da minha solicitação:
               className="lg:w-1/2 w-full space-y-8"
             >
               <div>
-                <div className="flex items-center gap-4 text-brand-gold font-bold tracking-widest uppercase text-sm mb-4">
+                <div className="flex items-center gap-4 text-brand-gold font-bold tracking-widest uppercase text-sm mb-3 md:mb-4">
                   <span className="w-12 h-px bg-brand-gold"></span>
                   Sustentabilidade
                 </div>
-                <h2 className="font-heading text-4xl sm:text-5xl md:text-7xl text-white leading-none">
+                <h2 className="font-heading text-3xl sm:text-5xl md:text-7xl text-white leading-none">
                   Nosso Compromisso com a <span className="text-brand-gold">Natureza</span>
                 </h2>
-                <p className="text-gray-400 mt-6 text-lg leading-relaxed">
+                <p className="text-gray-400 mt-4 md:mt-6 text-base md:text-lg leading-relaxed">
                   Buscamos equilibrar o ecoturismo com a preservação. Nossa missão é manter o ecossistema local vivo, oferecendo um espaço onde a natureza e o ser humano convivam em perfeita harmonia.
                 </p>
               </div>
@@ -992,7 +990,7 @@ Seguem os dados da minha solicitação:
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white/60 backdrop-blur-lg p-8 rounded-3xl shadow-xl border border-white"
+                className="bg-white/60 backdrop-blur-lg p-5 md:p-8 rounded-3xl shadow-xl border border-white"
               >
                 <div className="flex gap-1 mb-4">
                   {[1,2,3,4,5].map(star => <Star key={star} className="w-5 h-5 text-brand-gold fill-brand-gold" />)}
@@ -1017,20 +1015,20 @@ Seguem os dados da minha solicitação:
         <div className="absolute inset-0 bg-brand-black/40"></div>
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
           <h2 className="font-heading text-3xl sm:text-6xl md:text-8xl text-white mb-4 md:mb-6">Viva momentos inesquecíveis em meio à <span className="text-brand-orange">natureza</span>.</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <a 
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mt-6 md:mt-10">
+            <a
               href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Quero%20fazer%20uma%20reserva%20no%20Maraui%20Eco%20Park."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:scale-105 flex items-center justify-center"
+              className="bg-brand-orange hover:bg-brand-orange/90 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:scale-105 flex items-center justify-center"
             >
               Reservar Agora
             </a>
-            <a 
+            <a
               href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20falar%20conosco%20sobre%20o%20Maraui%20Eco%20Park."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all hover:scale-105 flex items-center justify-center gap-2"
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-sm tracking-widest uppercase transition-all hover:scale-105 flex items-center justify-center gap-2"
             >
               <Phone className="w-5 h-5" /> Falar no WhatsApp
             </a>
@@ -1041,7 +1039,7 @@ Seguem os dados da minha solicitação:
       {/* 11. RODAPÉ PREMIUM */}
       <footer className="bg-brand-black pt-10 md:pt-12 pb-6 px-4 md:px-6 text-brand-sand border-t border-white/10">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-10">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-3">
                 <Image 
