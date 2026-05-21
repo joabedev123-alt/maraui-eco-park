@@ -851,7 +851,7 @@ Seguem os dados da minha solicitação:
             className="group relative w-full rounded-3xl overflow-hidden shadow-xl max-h-[420px] md:max-h-[500px]"
           >
             <Image
-              src="/Iamgens ECO/choque evento.jpeg"
+              src="/Iamgens ECO/corrida do choque.jpeg"
               alt="Faça sua Prova no Nosso Espaço"
               width={0}
               height={0}
