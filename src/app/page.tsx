@@ -827,53 +827,35 @@ Seguem os dados da minha solicitação:
                 <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex flex-col items-start z-20">
                   <h3 className="font-heading text-2xl md:text-3xl text-white mb-2 leading-none">{item.title}</h3>
                   <div className="h-1 w-12 bg-brand-gold transition-all duration-300 group-hover:w-full mb-4"></div>
-                  <a
-                    href={item.waLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg"
-                  >
+                  <a href={item.waLink} target="_blank" rel="noopener noreferrer" className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg">
                     <span>Orçamento / Info</span>
-                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.761-4.318 9.764-9.756.002-2.63-1.02-5.101-2.877-6.96C16.3 2.03 13.827 1.008 11.97 1.008c-5.436 0-9.76 4.317-9.763 9.757-.001 2.038.547 4.027 1.588 5.825l-.949 3.466 3.791-.994z" />
-                    </svg>
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.761-4.318 9.764-9.756.002-2.63-1.02-5.101-2.877-6.96C16.3 2.03 13.827 1.008 11.97 1.008c-5.436 0-9.76 4.317-9.763 9.757-.001 2.038.547 4.027 1.588 5.825l-.949 3.466 3.791-.994z" /></svg>
                   </a>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Linha 2 — card destaque com imagem inteira */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="group relative w-full rounded-3xl overflow-hidden shadow-xl"
-          >
-            <Image
-              src="/Iamgens ECO/corrida do choque.jpeg"
-              alt="Faça sua Prova no Nosso Espaço"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/20 to-transparent flex flex-col items-center justify-end pb-8 md:pb-12 text-center px-6">
-              <h3 className="font-heading text-2xl md:text-4xl text-white mb-2 leading-none">Faça sua Prova no Nosso Espaço</h3>
-              <div className="h-1 w-12 bg-brand-gold transition-all duration-300 group-hover:w-48 mb-4 mx-auto"></div>
-              <a
-                href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20realizar%20uma%20prova%20ou%20evento%20esportivo%20no%20Maraui%20Eco%20Park."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 shadow-lg"
-              >
-                <span>Orçamento / Info</span>
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.761-4.318 9.764-9.756.002-2.63-1.02-5.101-2.877-6.96C16.3 2.03 13.827 1.008 11.97 1.008c-5.436 0-9.76 4.317-9.763 9.757-.001 2.038.547 4.027 1.588 5.825l-.949 3.466 3.791-.994z" />
-                </svg>
-              </a>
-            </div>
-          </motion.div>
+          {/* Linha 2 — card centralizado abaixo do card do meio */}
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group relative h-60 md:h-[300px] w-full lg:w-1/3 rounded-3xl overflow-hidden shadow-xl"
+            >
+              <Image src="/Iamgens ECO/corrida do choque.jpeg" alt="Faça sua Prova no Nosso Espaço" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-black/95 via-brand-black/30 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex flex-col items-start z-20">
+                <h3 className="font-heading text-2xl md:text-3xl text-white mb-2 leading-none">Faça sua Prova no Nosso Espaço</h3>
+                <div className="h-1 w-12 bg-brand-gold transition-all duration-300 group-hover:w-full mb-4"></div>
+                <a href="https://wa.me/5586988759200?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es%20para%20realizar%20uma%20prova%20ou%20evento%20esportivo%20no%20Maraui%20Eco%20Park." target="_blank" rel="noopener noreferrer" className="opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 bg-brand-orange hover:bg-brand-orange/90 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg">
+                  <span>Orçamento / Info</span>
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.437.002 9.761-4.318 9.764-9.756.002-2.63-1.02-5.101-2.877-6.96C16.3 2.03 13.827 1.008 11.97 1.008c-5.436 0-9.76 4.317-9.763 9.757-.001 2.038.547 4.027 1.588 5.825l-.949 3.466 3.791-.994z" /></svg>
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
